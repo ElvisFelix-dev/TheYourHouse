@@ -28,7 +28,6 @@
   <img src="mobile.png" alt="Logo" width="280" height="567">
 </div>
 <br />
-Projeto desenvolvido, durante a trilha Ignite Frontend. Para gestão financeira <br />
 
 <br />Sobre o aplicativo:<br />
 <br />
