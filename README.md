@@ -57,7 +57,7 @@ Projeto desenvolvido, durante a trilha Ignite Frontend. Para gestão financeira 
    ```
 2. Abra a pasta
    ```sh
-   cd DTmoney-firabase
+   cd TheYourHouse
 
 3. Instalando NPM packages
    ```sh
