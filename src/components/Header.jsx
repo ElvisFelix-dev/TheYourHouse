@@ -1,19 +1,33 @@
+import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 import imgLogo from '../assets/logo.svg'
 
 export default function Header() {
+  const [pageState, setPageState] = useState('Login')
   const location = useLocation()
   const navigate = useNavigate()
 
-  function pathMathRoute(route) {
+  const auth = getAuth()
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setPageState('Perfil')
+      } else {
+        setPageState('Login')
+      }
+    })
+  }, [auth])
+
+  function pathMatchRoute(route) {
     if (route === location.pathname) {
       return true
     }
   }
 
   return (
-    <div className="bg-#a8dadc border-b shadow-sm flex-shrink-0 top-0 z-50">
+    <div className="bg-#a8dadc border-b shadow-sm flex-shrink-0 top-0 z-40">
       <header className="flex justify-between items-center px-3 max-w-6xl mx-auto">
         <div>
           <img
@@ -27,7 +41,7 @@ export default function Header() {
           <ul className="flex space-x-10">
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-red-400 hover:text-red-700 hover:text-base transition-all duration-200 border-b-[3px] border-b-transparent ${
-                pathMathRoute('/initial') && 'text-black border-b-red-500'
+                pathMatchRoute('/initial') && 'text-black border-b-red-500'
               }`}
               onClick={() => navigate('/initial')}
             >
@@ -35,7 +49,7 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-red-400 hover:text-red-700 hover:text-base transition-all duration-200 border-b-[3px] border-b-transparent ${
-                pathMathRoute('/offers') && 'text-black border-b-red-500'
+                pathMatchRoute('/offers') && 'text-black border-b-red-500'
               }`}
               onClick={() => navigate('/offers')}
             >
@@ -43,11 +57,12 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-red-400 hover:text-red-700 hover:text-base transition-all duration-200 border-b-[3px] border-b-transparent ${
-                pathMathRoute('/sign-in') && 'text-black border-b-red-500'
+                (pathMatchRoute('/sign-in') || pathMatchRoute('/profile')) &&
+                'text-black border-b-red-500'
               }`}
-              onClick={() => navigate('/sign-in')}
+              onClick={() => navigate('/profile')}
             >
-              Login
+              {pageState}
             </li>
           </ul>
         </div>

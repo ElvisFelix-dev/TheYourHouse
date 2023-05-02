@@ -28,7 +28,7 @@ export default function OAuth() {
         })
       }
 
-      navigate('/')
+      navigate('/initial')
     } catch (error) {
       toast.error('Não autorizado com o Google')
     }
