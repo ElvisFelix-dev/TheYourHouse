@@ -76,6 +76,7 @@ export default function CreateListing() {
       }))
     }
   }
+
   async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
@@ -94,7 +95,7 @@ export default function CreateListing() {
     let location
     if (geolocationEnabled) {
       const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`,
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAvFlmEaxxmO5TFjdklgkZNJsE6j-3SNt8`,
       )
       const data = await response.json()
       console.log(data)
@@ -153,9 +154,11 @@ export default function CreateListing() {
 
     const imgUrls = await Promise.all(
       [...images].map((image) => storeImage(image)),
-    ).catch(() => {
+    ).catch((error) => {
       setLoading(false)
-      toast.error('Erro ao upar as imagens')
+      toast.error('Images not uploaded')
+
+      console.log(`${error}`)
     })
 
     const formDataCopy = {
@@ -163,6 +166,7 @@ export default function CreateListing() {
       imgUrls,
       geolocation,
       timestamp: serverTimestamp(),
+      userRef: auth.currentUser.uid,
     }
 
     delete formDataCopy.images
