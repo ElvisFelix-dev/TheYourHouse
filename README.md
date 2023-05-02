@@ -33,10 +33,10 @@ Projeto desenvolvido, durante a trilha Ignite Frontend. Para gestão financeira 
 <br />Sobre o aplicativo:<br />
 <br />
 
-- Adicionar uma nova transação
-- Somar valores de entrada e saída
-- Buscar uma transação específica
-- Diferenciar entrada e saída com cores diferentes
+- Usuario vai pode logar na aplicação
+- Adicionar um imovel, para venda ou para aluguel
+- Fazer descrição do imovel, e adicionar fotos do imovel
+- Vai poder entrar em contato do dono do imovel para fechar negocio.
 
 <p align="right">(<a href="#topo">Para o topo</a>)</p>
 
