@@ -3,7 +3,7 @@ import { FaHeart, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 export default function Footer() {
   return (
     <>
-      <footer className="flex flex-col items-center justify-center bg-gray-900 text-white py-8">
+      <footer className="bottom-0 flex-shrink-0 bg-gray-900 text-white py-8 w-full flex flex-col items-center justify-center">
         <div className="flex space-x-4 mb-4">
           <a
             className="text-red-600 hover:text-red-800 transition-all duration-200"
@@ -39,6 +39,11 @@ export default function Footer() {
             Desenvolvido por 2System
           </a>
         </p>
+        <div className="mt-auto">
+          <p className="text-xs text-white">
+            © 2023 YourHouse. Todos os direitos reservados.
+          </p>
+        </div>
       </footer>
     </>
   )

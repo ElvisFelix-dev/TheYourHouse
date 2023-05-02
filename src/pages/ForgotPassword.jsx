@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
+import { toast } from 'react-toastify'
+
 import OAuth from '../components/Oauth'
 
 import imgKey from '../assets/imgKey.jpg'
@@ -11,6 +14,17 @@ export default function ForgotPassword() {
     setEmail(e.target.value)
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+    try {
+      const auth = getAuth()
+      await sendPasswordResetEmail(auth, email)
+      toast.success('Email enviado')
+    } catch (error) {
+      toast.error('Erro ao enviar a senha de redefinição')
+    }
+  }
+
   return (
     <section>
       <h1 className="text-3xl text-center mt-6 font-bold">Esqueceu a senha</h1>
@@ -19,7 +33,7 @@ export default function ForgotPassword() {
           <img src={imgKey} alt="key" className="w-full rounded-2xl" />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               id="email"

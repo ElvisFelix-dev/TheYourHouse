@@ -1,6 +1,15 @@
 import { useState } from 'react'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth'
+import { db } from '../firebase'
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
+import { toast } from 'react-toastify'
+
 import OAuth from '../components/Oauth'
 
 import imgCorretora from '../assets/imgCorretora.jpg'
@@ -14,6 +23,7 @@ export default function SignUp() {
   })
 
   const { name, email, password } = formData
+  const navigate = useNavigate()
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
@@ -21,15 +31,42 @@ export default function SignUp() {
     }))
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    try {
+      const auth = getAuth()
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      )
+
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      })
+      const user = userCredential.user
+      const formDataCopy = { ...formData }
+      delete formDataCopy.password
+      formDataCopy.timestamp = serverTimestamp()
+
+      await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      // toast.success("Sign up was successful");
+      // navigate("/");
+    } catch (error) {
+      toast.error('Algo deu errado com o registro')
+    }
+  }
+
   return (
     <section>
-      <h1 className="text-3xl text-center mt-6 font-bold">Fazer Cadastrar</h1>
+      <h1 className="text-3xl text-center mt-6 font-bold">Fazer Cadastro</h1>
       <div className="flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto">
         <div className="md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
           <img src={imgCorretora} alt="key" className="w-full rounded-2xl" />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               id="name"

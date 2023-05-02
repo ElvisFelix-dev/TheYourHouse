@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import OAuth from '../components/Oauth'
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth'
+import { toast } from 'react-toastify'
 
 import imgCasal from '../assets/imgCasal.jpg'
 
@@ -13,11 +15,30 @@ export default function SignIn() {
   })
 
   const { email, password } = formData
+  const navigate = useNavigate()
+
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }))
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    try {
+      const auth = getAuth()
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      )
+      if (userCredential.user) {
+        navigate('/initial')
+      }
+    } catch (error) {
+      toast.error('Dados inválidos')
+    }
   }
 
   return (
@@ -28,7 +49,7 @@ export default function SignIn() {
           <img src={imgCasal} alt="key" className="w-full rounded-2xl" />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               id="email"
