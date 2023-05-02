@@ -13,6 +13,8 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import PrivateRoute from './components/PrivateRoute'
 import CreateListing from './pages/CreateListing'
+import EditListing from './pages/EditListing'
+import Listing from './pages/Listing'
 
 export function App() {
   return (
@@ -29,9 +31,19 @@ export function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="/category/:categoryName/:listingId"
+              element={<Listing />}
+            />
             <Route path="/offers" element={<Offers />} />
             <Route path="create-listing" element={<PrivateRoute />}>
               <Route path="/create-listing" element={<CreateListing />} />
+            </Route>
+            <Route path="edit-listing" element={<PrivateRoute />}>
+              <Route
+                path="/edit-listing/:listingId"
+                element={<EditListing />}
+              />
             </Route>
           </Routes>
         </Router>
