@@ -314,7 +314,7 @@ export default function CreateListing() {
           id="address"
           value={address}
           onChange={onChange}
-          placeholder="Endereço do local"
+          placeholder="Ex: Av/Rua: Roberto Carlos N°327 Jaú SP "
           required
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />
@@ -354,7 +354,7 @@ export default function CreateListing() {
           id="description"
           value={description}
           onChange={onChange}
-          placeholder="Descrição do local"
+          placeholder="Descreva com detalhes"
           required
           className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 mb-6"
         />

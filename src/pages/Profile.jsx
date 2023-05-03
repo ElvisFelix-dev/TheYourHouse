@@ -26,17 +26,22 @@ export default function Profile() {
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
   })
+
   const { name, email } = formData
+
   function onLogout() {
     auth.signOut()
+    toast.success('Deslogado com sucesso')
     navigate('/')
   }
+
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }))
   }
+
   async function onSubmit() {
     try {
       if (auth.currentUser.displayName !== name) {
@@ -52,9 +57,9 @@ export default function Profile() {
           name,
         })
       }
-      toast.success('Profile details updated')
+      toast.success('Atualizado com sucesso')
     } catch (error) {
-      toast.error('Could not update the profile details')
+      toast.error('Erro ao atualizar o perfil')
     }
   }
   useEffect(() => {

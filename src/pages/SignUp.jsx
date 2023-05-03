@@ -51,8 +51,8 @@ export default function SignUp() {
       formDataCopy.timestamp = serverTimestamp()
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy)
-      // toast.success("Sign up was successful");
-      // navigate("/");
+      toast.success('Cadastrado com sucesso')
+      navigate('/sign-in')
     } catch (error) {
       toast.error('Algo deu errado com o registro')
     }

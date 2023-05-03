@@ -33,9 +33,11 @@ export default function SignIn() {
         email,
         password,
       )
+
       if (userCredential.user) {
         navigate('/initial')
       }
+      toast.success('Login com sucesso')
     } catch (error) {
       toast.error('Dados inválidos')
     }
