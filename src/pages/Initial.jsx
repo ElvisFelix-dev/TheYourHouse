@@ -110,10 +110,12 @@ export default function Initial() {
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListings && offerListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Recent offers</h2>
+            <h2 className="px-3 text-2xl mt-6 font-semibold">
+              Imóveis Recentes com Ofertas
+            </h2>
             <Link to="/offers">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more offers
+                Mostrar Mais Ofertas
               </p>
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
@@ -130,11 +132,11 @@ export default function Initial() {
         {rentListings && rentListings.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">
-              Places for rent
+              Lugares para alugar
             </h2>
             <Link to="/category/rent">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more places for rent
+                Mostrar mais lugares para alugel
               </p>
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
@@ -151,11 +153,11 @@ export default function Initial() {
         {saleListings && saleListings.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">
-              Places for sale
+              Imóveis Recentes para Vendas
             </h2>
             <Link to="/category/sale">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more places for sale
+                Mostrar mais lugares para vendas
               </p>
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">

@@ -13,7 +13,7 @@ export default function Contact({ userRef, listing }) {
       if (docSnap.exists()) {
         setLandlord(docSnap.data())
       } else {
-        toast.error('Could not get landlord data')
+        toast.error('Não foi possível obter os dados do proprietário')
       }
     }
     getLandlord()
@@ -26,7 +26,7 @@ export default function Contact({ userRef, listing }) {
       {landlord !== null && (
         <div className="flex flex-col w-full">
           <p>
-            Contact {landlord.name} for the {listing.name.toLowerCase()}
+            Contato {landlord.name} for the {listing.name.toLowerCase()}
           </p>
           <div className="mt-3 mb-6">
             <textarea
@@ -45,7 +45,7 @@ export default function Contact({ userRef, listing }) {
               className="px-7 py-3 bg-blue-600 text-white rounded text-sm uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full text-center mb-6"
               type="button"
             >
-              Send Message
+              Enviar Mensagem
             </button>
           </a>
         </div>

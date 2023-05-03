@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import { ptBR } from 'date-fns/locale'
 import { Link } from 'react-router-dom'
 import { MdLocationOn, MdEdit } from 'react-icons/md'
 import { FaTrash } from 'react-icons/fa'
+
 export default function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
     <li className="relative bg-white flex flex-col justify-between items-center shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-150 m-[10px]">
@@ -13,7 +15,7 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           src={listing.imgUrls[0]}
         />
         <div className="absolute top-2 left-2 bg-[#3377cc] text-white uppercase text-xs font-semibold rounded-md px-2 py-1 shadow-lg">
-          {formatDistanceToNow(listing.timestamp?.toDate())}
+          {formatDistanceToNow(listing.timestamp?.toDate(), { locale: ptBR })}
         </div>
         <div className="w-full p-[10px]">
           <div className="flex items-center space-x-1">
@@ -24,27 +26,24 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           </div>
           <p className="font-semibold m-0 text-xl truncate">{listing.name}</p>
           <p className="text-[#457b9d] mt-2 font-semibold">
-            R$
             {listing.offer
-              ? listing.discountedPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-              : listing.regularPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              ? `R$ ${listing.discountedPrice.toLocaleString()}`
+              : `R$ ${listing.regularPrice.toLocaleString()}`}
             {listing.type === 'rent' && ' / month'}
           </p>
           <div className="flex items-center mt-[10px] space-x-3">
             <div className="flex items-center space-x-1">
               <p className="font-bold text-xs">
-                {listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : '1 Bed'}
+                {listing.bedrooms > 1
+                  ? `${listing.bedrooms} Quartos`
+                  : '1 Quarto'}
               </p>
             </div>
             <div className="flex items-center space-x-1">
               <p className="font-bold text-xs">
                 {listing.bathrooms > 1
-                  ? `${listing.bathrooms} Baths`
-                  : '1 Bath'}
+                  ? `${listing.bathrooms} Banheiros`
+                  : '1 Banheiro'}
               </p>
             </div>
           </div>
