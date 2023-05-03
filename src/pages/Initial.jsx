@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 import ListingItem from '../components/ListingItem'
 import Slider from '../components/Slider'
 import { db } from '../firebase'
+import { Helmet } from 'react-helmet-async'
 
 export default function Initial() {
   // Offers
@@ -107,6 +108,9 @@ export default function Initial() {
   return (
     <div>
       <Slider />
+      <Helmet>
+        <title>YourHouse | Home</title>
+      </Helmet>
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListings && offerListings.length > 0 && (
           <div className="m-2 mb-6">

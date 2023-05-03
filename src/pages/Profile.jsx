@@ -15,6 +15,7 @@ import { toast } from 'react-toastify'
 import { db } from '../firebase'
 import { FcHome } from 'react-icons/fc'
 import ListingItem from '../components/ListingItem'
+import { Helmet } from 'react-helmet-async'
 
 export default function Profile() {
   const auth = getAuth()
@@ -100,6 +101,9 @@ export default function Profile() {
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
+        <Helmet>
+          <title>YourHouse | {name}</title>
+        </Helmet>
         <h1 className="text-3xl text-center mt-6 font-bold">Perfil</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>

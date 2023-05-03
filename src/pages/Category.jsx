@@ -13,12 +13,14 @@ import { db } from '../firebase'
 import Spinner from '../components/Spinner'
 import ListingItem from '../components/ListingItem'
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 export default function Category() {
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
   const [lastFetchedListing, setLastFetchListing] = useState(null)
   const params = useParams()
+
   useEffect(() => {
     async function fetchListings() {
       try {
@@ -78,6 +80,9 @@ export default function Category() {
 
   return (
     <div className="max-w-6xl mx-auto px-3">
+      <Helmet>
+        <title>YourHouse | Categorias</title>
+      </Helmet>
       <h1 className="text-3xl text-center mt-6 font-bold mb-6">
         {params.categoryName === 'rent' ? 'Places for rent' : 'Places for sale'}
       </h1>

@@ -12,6 +12,7 @@ import {
 import { db } from '../firebase'
 import Spinner from '../components/Spinner'
 import ListingItem from '../components/ListingItem'
+import { Helmet } from 'react-helmet-async'
 import { async } from '@firebase/util'
 
 export default function Offers() {
@@ -77,6 +78,9 @@ export default function Offers() {
   return (
     <>
       <div className="max-w-6xl mx-auto px-3">
+        <Helmet>
+          <title>YourHouse | Ofertas</title>
+        </Helmet>
         <h1 className="text-3xl text-center mt-6 font-bold mb-6">Ofertas</h1>
         {loading ? (
           <Spinner />

@@ -12,6 +12,7 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 export default function CreateListing() {
   const navigate = useNavigate()
@@ -185,6 +186,9 @@ export default function CreateListing() {
 
   return (
     <main className="max-w-md px-2 mx-auto">
+      <Helmet>
+        <title>YourHouse | Anunciar Imóveis</title>
+      </Helmet>
       <h1 className="text-3xl text-center mt-6 font-bold">
         Criar Venda / Aluguel
       </h1>

@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
+
 import '../styles/styles.css'
 
 export default function Home() {
   return (
     <div className="bg-[url('./assets/imgBg.jpg')] bg-cover h-screen">
+      <Helmet>
+        <title>YourHouse</title>
+      </Helmet>
       <div className="father">
         <div className="children">
           <h1>

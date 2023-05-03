@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import OAuth from '../components/Oauth'
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { toast } from 'react-toastify'
+import { Helmet } from 'react-helmet-async'
 
 import imgCasal from '../assets/imgCasal.jpg'
 
@@ -45,6 +46,9 @@ export default function SignIn() {
 
   return (
     <section>
+      <Helmet>
+        <title>YourHouse | Entrar</title>
+      </Helmet>
       <h1 className="text-3xl text-center mt-6 font-bold">Fazer login</h1>
       <div className="flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto">
         <div className="md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
