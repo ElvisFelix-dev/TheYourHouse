@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { getAuth, updateProfile } from 'firebase/auth'
 import {
   collection,
@@ -10,34 +9,28 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore'
-import { useNavigate, Link } from 'react-router-dom'
-
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { db } from '../firebase'
-import ListingItem from '../components/ListingItem'
-
 import { FcHome } from 'react-icons/fc'
+import ListingItem from '../components/ListingItem'
 
 export default function Profile() {
   const auth = getAuth()
   const navigate = useNavigate()
-
   const [changeDetail, setChangeDetail] = useState(false)
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
-
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
   })
-
   const { name, email } = formData
-
   function onLogout() {
     auth.signOut()
-    navigate('/initial')
+    navigate('/')
   }
-
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
@@ -59,12 +52,11 @@ export default function Profile() {
           name,
         })
       }
-      toast.success('Perfil atualizado')
+      toast.success('Profile details updated')
     } catch (error) {
-      toast.error('Erro ao atualizar o perfil')
+      toast.error('Could not update the profile details')
     }
   }
-
   useEffect(() => {
     async function fetchUserListings() {
       const listingRef = collection(db, 'listings')
@@ -84,9 +76,9 @@ export default function Profile() {
       setListings(listings)
       setLoading(false)
     }
+
     fetchUserListings()
   }, [auth.currentUser.uid])
-
   async function onDelete(listingID) {
     if (window.confirm('Are you sure you want to delete?')) {
       await deleteDoc(doc(db, 'listings', listingID))
@@ -100,11 +92,10 @@ export default function Profile() {
   function onEdit(listingID) {
     navigate(`/edit-listing/${listingID}`)
   }
-
   return (
     <>
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
-        <h1 className="text-3xl text-center mt-6 font-bold">Meu Perfil</h1>
+        <h1 className="text-3xl text-center mt-6 font-bold">My Profile</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>
             {/* Name Input */}
@@ -132,7 +123,7 @@ export default function Profile() {
 
             <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
               <p className="flex items-center ">
-                Deseja mudar o nome?
+                Do you want to change your name?
                 <span
                   onClick={() => {
                     changeDetail && onSubmit()
@@ -140,14 +131,14 @@ export default function Profile() {
                   }}
                   className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer"
                 >
-                  {changeDetail ? 'Salvar Alteração' : 'Editar'}
+                  {changeDetail ? 'Apply change' : 'Edit'}
                 </span>
               </p>
               <p
                 onClick={onLogout}
                 className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out cursor-pointer"
               >
-                Sair
+                Sign out
               </p>
             </div>
           </form>
@@ -160,7 +151,7 @@ export default function Profile() {
               className="flex justify-center items-center"
             >
               <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
-              Vender ou Alugar seu imóvel
+              Sell or rent your home
             </Link>
           </button>
         </div>
