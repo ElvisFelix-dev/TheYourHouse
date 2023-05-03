@@ -1,34 +1,44 @@
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
-import '../styles/styles.css'
-
 export default function Home() {
   return (
-    <div className="bg-[url('./assets/imgBg.jpg')] bg-cover h-screen">
-      <Helmet>
-        <title>YourHouse</title>
-      </Helmet>
-      <div className="father">
-        <div className="children">
-          <h1>
-            Está procurando um local confortável para se reunir com seus amigos
-            e familiares? <br />
-            Ou está pensando em adquir um imóvel?
+    <section className="relative bg-[url('./assets/imgBg.jpg')] bg-cover bg-center bg-no-repeat">
+      <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
+
+      <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+        <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+          <h1 className="text-3xl font-extrabold sm:text-5xl">
+            Está Buscando Algo?
+            <strong className="block font-extrabold text-rose-700">
+              Aqui Você Vai Encontrar
+            </strong>
           </h1>
-          <br />
-          <h3>Até mesmo para festas, com amigos e familiares.</h3>
-          <br />
-          <h3>Na YourHouse voce encontra tudo e mais um pouco. </h3>
-          <br />
-          <br />
-          <Link to="/sign-in">
-            <button className="btn">
-              Faça seu login, e explore as oportunidades
-            </button>
-          </Link>
+
+          <p className="mt-4 max-w-lg sm:text-xl/relaxed">
+            Um local para fazer um encontro com familiares e amigos, Ou até
+            mesmo a sua próxima aquisição. Na{' '}
+            <span className="text-rose-700">YourHouse </span>
+            você vai encontrar.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-4 text-center">
+            <a
+              href="#"
+              className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+            >
+              Fazer Login
+            </a>
+
+            <a
+              href="#"
+              className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
+            >
+              Fazer Cadastro
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
