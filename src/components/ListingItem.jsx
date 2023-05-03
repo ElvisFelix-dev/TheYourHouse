@@ -29,7 +29,7 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
             {listing.offer
               ? `R$ ${listing.discountedPrice.toLocaleString()}`
               : `R$ ${listing.regularPrice.toLocaleString()}`}
-            {listing.type === 'rent' && ' / month'}
+            {listing.type === 'rent' && ' / mensal'}
           </p>
           <div className="flex items-center mt-[10px] space-x-3">
             <div className="flex items-center space-x-1">
