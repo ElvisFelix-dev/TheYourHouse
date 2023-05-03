@@ -1,0 +1,60 @@
+
+
+
+.father {
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-left: 100px;
+}
+
+.children {
+  width: 100%;
+  margin-top: 95px;
+}
+
+.children button.btn {
+  border: 0;
+  border-radius: 20px;
+  width: 400px;
+  height: 42px;
+  padding: 0 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #f05a5b;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.children button.btn:hover {
+  background: #e14f50;
+}
+
+@media screen and (max-width: 578px) {
+ .father {
+    max-width:  700px;
+    width: 95%;
+  }
+
+  .children {
+    width: 100%;
+    margin-right: 11rem;
+  }
+
+  .children button.btn {
+    border: 0;
+    border-radius: 20px;
+    width: 370px;
+    height: 42px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #f05a5b;
+    color: #FFF;
+    cursor: pointer;
+  }
+
+}
