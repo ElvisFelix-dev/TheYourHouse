@@ -131,10 +131,10 @@ export default function CreateListing() {
             console.log('Upload is ' + progress + '% done')
             switch (snapshot.state) {
               case 'paused':
-                console.log('Upload is paused')
+                console.log('Upload pausado')
                 break
               case 'running':
-                console.log('Upload is running')
+                console.log('Upload em andamento')
                 break
             }
           },
@@ -157,7 +157,7 @@ export default function CreateListing() {
       [...images].map((image) => storeImage(image)),
     ).catch((error) => {
       setLoading(false)
-      toast.error('Erro ao upar a imagen(s)')
+      toast.error('Erro ao upar o arquivo')
 
       console.log(`${error}`)
     })

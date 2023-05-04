@@ -63,7 +63,7 @@ export default function CreateListing() {
 
   useEffect(() => {
     if (listing && listing.userRef !== auth.currentUser.uid) {
-      toast.error("You can't edit this listing")
+      toast.error('Você não pode editar esse imóvel')
       navigate('/')
     }
   }, [auth.currentUser.uid, listing, navigate])
@@ -79,7 +79,7 @@ export default function CreateListing() {
         setLoading(false)
       } else {
         navigate('/')
-        toast.error('Listing does not exist')
+        toast.error('Imóvel não existe')
       }
     }
     fetchListing()
@@ -113,12 +113,12 @@ export default function CreateListing() {
     setLoading(true)
     if (+discountedPrice >= +regularPrice) {
       setLoading(false)
-      toast.error('Discounted price needs to be less than regular price')
+      toast.error('O preço com desconto precisa ser menor que o preço normal')
       return
     }
     if (images.length > 6) {
       setLoading(false)
-      toast.error('maximum 6 images are allowed')
+      toast.error('No máximo 6 imagens são permitidas')
       return
     }
     const geolocation = {}
@@ -136,7 +136,7 @@ export default function CreateListing() {
 
       if (location === undefined) {
         setLoading(false)
-        toast.error('please enter a correct address')
+        toast.error('Por favor insira um endereço correto')
         return
       }
     } else {
@@ -160,10 +160,10 @@ export default function CreateListing() {
             console.log('Upload is ' + progress + '% done')
             switch (snapshot.state) {
               case 'paused':
-                console.log('Upload is paused')
+                console.log('Upload pausado')
                 break
               case 'running':
-                console.log('Upload is running')
+                console.log('Upload em andamento')
                 break
             }
           },
@@ -186,7 +186,7 @@ export default function CreateListing() {
       [...images].map((image) => storeImage(image)),
     ).catch(() => {
       setLoading(false)
-      toast.err('Images not uploaded')
+      toast.err('Erro ao upar o arquivo')
     })
 
     const formDataCopy = {
@@ -204,7 +204,7 @@ export default function CreateListing() {
 
     await updateDoc(docRef, formDataCopy)
     setLoading(false)
-    toast.success('Listing Edited')
+    toast.success('Editado com sucesso')
     navigate(`/category/${formDataCopy.type}/${docRef.id}`)
   }
 

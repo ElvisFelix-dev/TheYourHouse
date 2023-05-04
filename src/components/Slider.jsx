@@ -11,17 +11,20 @@ import SwiperCore, {
 } from 'swiper'
 import 'swiper/css/bundle'
 import { useNavigate } from 'react-router-dom'
+
 export default function Slider() {
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
   SwiperCore.use([Autoplay, Navigation, Pagination])
   const navigate = useNavigate()
+
   useEffect(() => {
     async function fetchListings() {
       const listingsRef = collection(db, 'listings')
       const q = query(listingsRef, orderBy('timestamp', 'desc'), limit(5))
       const querySnap = await getDocs(q)
       const listings = []
+
       querySnap.forEach((doc) => {
         return listings.push({
           id: doc.id,
@@ -39,6 +42,7 @@ export default function Slider() {
   if (listings.length === 0) {
     return <></>
   }
+
   return (
     listings && (
       <>

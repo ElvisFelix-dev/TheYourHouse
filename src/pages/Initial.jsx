@@ -140,7 +140,7 @@ export default function Initial() {
             </h2>
             <Link to="/category/rent">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Mostrar mais lugares para alugel
+                Mostrar mais lugares para aluguel
               </p>
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
