@@ -12,7 +12,7 @@
 
   <p align="center">
     <br />
-    <a href="houseyour.netlify.app/">Demo do projeto</a>
+    <a href="https://houseyour.netlify.app/">Demo do projeto</a>
   </p>
 </div>
 
