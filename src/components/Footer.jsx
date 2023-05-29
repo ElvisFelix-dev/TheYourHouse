@@ -13,14 +13,7 @@ export default function Footer() {
           >
             <FaInstagram size={20} />
           </a>
-          <a
-            className="text-blue-600 hover:text-blue-800 transition-all duration-200"
-            href="https://twitter.com/elvis__felix"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaTwitter size={20} />
-          </a>
+         
           <a
             className="text-green-600 hover:text-green-800 transition-all duration-200"
             href="https://wa.me/5516996318063"
