@@ -55,6 +55,16 @@ export default function Header() {
             >
               Ofertas
             </li>
+            
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-red-400 hover:text-red-700 hover:text-base transition-all duration-200 border-b-[3px] border-b-transparent ${
+                (pathMatchRoute('/sign-in') || pathMatchRoute('/profile')) &&
+                'text-black border-b-red-500'
+              }`}
+              onClick={() => navigate('/profile')}
+            >
+              {pageState}
+            </li>
            
           </ul>
         </div>
