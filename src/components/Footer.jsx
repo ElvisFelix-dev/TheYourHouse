@@ -1,4 +1,4 @@
-import { FaHeart, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa'
+import { FaLinkedin, FaGithub, FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -21,6 +21,23 @@ export default function Footer() {
             rel="noreferrer"
           >
             <FaWhatsapp size={20} />
+          </a>
+          <a
+            className="text-gray-600 hover:text-gray-800 transition-all duration-200"
+            href="https://github.com/ElvisFelix-dev"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithub size={20} />
+          </a>
+
+          <a
+            className="text-blue-600 hover:text-blue-800 transition-all duration-200"
+            href="https://www.linkedin.com/in/elvis-felix/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin size={20} />
           </a>
         </div>
         <p className="text-sm text-white hover:text-gray-400 transition-all duration-200 inline-block">
