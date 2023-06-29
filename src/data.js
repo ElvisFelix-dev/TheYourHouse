@@ -8,20 +8,20 @@ import imgWoman from '../src/assets/imgWoman.png'
 
 export const testimonials = [
   {
-    text: ' A equipe foi altamente diligente, trabalhando arduamente para construir uma estratégia sólida e buscar a melhor solução para o meu caso.',
-    name: 'Alice Cooper',
+    text: 'A equipe foi muito profissional, atenciosa e paciente ao me mostrar várias opções e responder todas as minhas perguntas.',
+    name: 'Alice Ramos',
     image: ProfilePhoto1,
     position: 'Empresária',
   },
   {
-    text: ' Eles me orientaram em todos os aspectos legais e me mantiveram informado sobre o progresso do processo.',
-    name: 'Theresa Webb',
+    text: 'A experiência de vender meu apartamento com a Imobiliária YourHouse foi excepcional. Desde o primeiro contato, fui tratada com respeito e profissionalismo.',
+    name: 'Theresa Silva',
     image: ProfilePhoto2,
     position: 'Engenheira Civil',
   },
   {
-    text: 'Contratar o escritório de advocacia foi a melhor decisão que tomei para resolver meu problema jurídico. A equipe demonstrou habilidades excepcionais, trabalhando incansavelmente para proteger meus interesses. ',
-    name: 'Kathryn Murphy',
+    text: 'Eles foram muito atenciosos, compreenderam minhas preferências e encontraram opções que atendiam às minhas necessidades e orçamento.',
+    name: 'Katia Antunes',
     image: ProfilePhoto3,
     position: 'Psicóloga',
   },

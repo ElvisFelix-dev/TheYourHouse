@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async'
+
 import imgImovel from '../assets/imgImovel.jpg'
 import imgCorretores from '../assets/imgCorretores.jpg'
 import Card from '../components/Card'
@@ -9,6 +11,9 @@ import imgWoman from '../assets/imgWoman.png'
 export default function About() {
   return (
     <>
+      <Helmet>
+        <title>YourHouse | Sobre</title>
+      </Helmet>
       <div className="container mx-auto p-4">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 mb-4">

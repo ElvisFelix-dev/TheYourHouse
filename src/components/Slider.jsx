@@ -10,6 +10,7 @@ import SwiperCore, {
   Pagination,
 } from 'swiper'
 import 'swiper/css/bundle'
+import { format, parseISO } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
 
 export default function Slider() {
@@ -36,9 +37,11 @@ export default function Slider() {
     }
     fetchListings()
   }, [])
+
   if (loading) {
     return <Spinner />
   }
+
   if (listings.length === 0) {
     return <></>
   }
@@ -54,27 +57,43 @@ export default function Slider() {
           modules={[EffectFade]}
           autoplay={{ delay: 3000 }}
         >
-          {listings.map(({ data, id }) => (
-            <SwiperSlide
-              key={id}
-              onClick={() => navigate(`/category/${data.type}/${id}`)}
-            >
-              <div
-                style={{
-                  background: `url(${data.imgUrls[0]}) center, no-repeat`,
-                  backgroundSize: 'cover',
-                }}
-                className="relative w-full h-[300px] overflow-hidden"
-              ></div>
-              <p className="text-[#f1faee] absolute left-1 top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded-br-3xl">
-                {data.name}
-              </p>
-              <p className="text-[#f1faee] absolute left-1 bottom-1 font-semibold max-w-[90%] bg-[#e63946] shadow-lg opacity-90 p-2 rounded-tr-3xl">
-                R$ {data.discountedPrice ?? data.regularPrice}
-                {data.type === 'rent' && ' / mensal'}
-              </p>
-            </SwiperSlide>
-          ))}
+          {listings.map(({ data, id }) => {
+            const formattedDiscountedPrice = data.discountedPrice
+              ? data.discountedPrice.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })
+              : ''
+
+            const formattedRegularPrice = data.regularPrice
+              ? data.regularPrice.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })
+              : ''
+
+            return (
+              <SwiperSlide
+                key={id}
+                onClick={() => navigate(`/category/${data.type}/${id}`)}
+              >
+                <div
+                  style={{
+                    background: `url(${data.imgUrls[0]}) center, no-repeat`,
+                    backgroundSize: 'cover',
+                  }}
+                  className="relative w-full h-[300px] overflow-hidden"
+                ></div>
+                <p className="text-[#f1faee] absolute left-1 top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded-br-3xl">
+                  {data.name}
+                </p>
+                <p className="text-[#f1faee] absolute left-1 bottom-1 font-semibold max-w-[90%] bg-[#e63946] shadow-lg opacity-90 p-2 rounded-tr-3xl">
+                  R$ {formattedDiscountedPrice || formattedRegularPrice}
+                  {data.type === 'rent' && ' / mensal'}
+                </p>
+              </SwiperSlide>
+            )
+          })}
         </Swiper>
       </>
     )

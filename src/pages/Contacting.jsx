@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async'
+
 import Carousel from '../components/Carousel'
 import Map from '../components/Map'
 import SocialLinks from '../components/SocialLinks'
@@ -5,6 +7,9 @@ import SocialLinks from '../components/SocialLinks'
 export default function Contacting() {
   return (
     <>
+      <Helmet>
+        <title>YourHouse | Contato</title>
+      </Helmet>
       <div className="container mx-auto p-4">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 mb-4">
