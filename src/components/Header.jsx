@@ -64,6 +64,22 @@ export default function Header() {
             >
               {pageState}
             </li>
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-red-400 hover:text-red-700 hover:text-base transition-all duration-200 border-b-[3px] border-b-transparent ${
+                pathMatchRoute('/offers') && 'text-black border-b-red-500'
+              }`}
+              onClick={() => navigate('/about')}
+            >
+              Sobre
+            </li>
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-red-400 hover:text-red-700 hover:text-base transition-all duration-200 border-b-[3px] border-b-transparent ${
+                pathMatchRoute('/offers') && 'text-black border-b-red-500'
+              }`}
+              onClick={() => navigate('/contacting')}
+            >
+              Contato
+            </li>
           </ul>
         </div>
       </header>

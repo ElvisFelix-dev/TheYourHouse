@@ -16,6 +16,8 @@ import CreateListing from './pages/CreateListing'
 import EditListing from './pages/EditListing'
 import Listing from './pages/Listing'
 import Category from './pages/Category'
+import About from './pages/About'
+import Contacting from './pages/Contacting'
 
 export function App() {
   return (
@@ -26,6 +28,8 @@ export function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/initial" element={<Initial />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contacting" element={<Contacting />} />
             <Route path="/profile" element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />
             </Route>
