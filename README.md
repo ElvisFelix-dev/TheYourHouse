@@ -12,7 +12,7 @@
 
   <p align="center">
     <br />
-    <a href="">Demo do projeto</a>
+    <a href="https://houseyour.netlify.app/" target="_blank" rel="noreferrer">Demo do projeto</a>
   </p>
 </div>
 
