@@ -26,7 +26,7 @@ export default function Contact({ userRef, listing }) {
       {landlord !== null && (
         <div className="flex flex-col w-full">
           <p>
-            Contate {landlord.name} sobre {listing.name.toLowerCase()}
+            Contate {landlord.name} sobre {listing.name.toUpperCase()}
           </p>
           <div className="mt-3 mb-6">
             <textarea

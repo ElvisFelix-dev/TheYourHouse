@@ -37,7 +37,9 @@ export default function About() {
             </p>
           </div>
           <div className="md:w-1/2 md:pl-8">
-            <h1 className="text-2xl font-bold mb-4">Sobre a Imobiliária</h1>
+            <h1 className="text-2xl font-bold mb-4 text-slate-800">
+              Sobre a Imobiliária
+            </h1>
             <p className="mb-4">
               A Imobiliária Your House é uma empresa que cresceu rapidamente
               desde a sua fundação. O seu sucesso é resultado do compromisso
@@ -57,7 +59,9 @@ export default function About() {
           </div>
         </div>
         <div className="justify-center">
-          <h1 className="text-center pt-5 text-5xl font-bold ">Nosso time</h1>
+          <h1 className="text-center pt-5 text-5xl font-bold text-slate-800">
+            Nosso time
+          </h1>
         </div>
       </div>
       <div className="flex flex-wrap gap-4 justify-center pb-3">
